@@ -3,6 +3,7 @@ import 'package:restaurant/common/app_style.dart';
 import 'package:restaurant/common/background_container.dart';
 import 'package:restaurant/common/reusable_text.dart';
 import 'package:restaurant/constants/constants.dart';
+import 'package:restaurant/views/add_foods/widgets/additives_info.dart';
 import 'package:restaurant/views/add_foods/widgets/all_categories.dart';
 import 'package:restaurant/views/add_foods/widgets/food_info.dart';
 import 'package:restaurant/views/add_foods/widgets/image_uploads.dart';
@@ -16,6 +17,24 @@ class AddFoods extends StatefulWidget {
 
 class _AddFoodsState extends State<AddFoods> {
   final PageController _pageController = PageController();
+  final TextEditingController title = TextEditingController();
+  final TextEditingController description = TextEditingController();
+  final TextEditingController price = TextEditingController();
+  final TextEditingController preparation = TextEditingController();
+  final TextEditingController types = TextEditingController();
+  final TextEditingController additivePrice = TextEditingController();
+  final TextEditingController additiveTitle = TextEditingController();
+
+  @override
+  void dispose(){
+    title.dispose();
+    description.dispose();
+    price.dispose();
+    preparation.dispose();
+    types.dispose();
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +86,28 @@ class _AddFoodsState extends State<AddFoods> {
                     },
                   ),
 
-                  FoodInfo(back: (){}, next: (){})
+                  FoodInfo(
+                      back: (){
+                        _pageController.previousPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn);
+                      },
+                      next: (){
+                        _pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn);
+                      },
+                      title: title,
+                      description: description,
+                      price: price,
+                      preparation: preparation,
+                      types:types
+                  ),
+
+                  AdditivesInfo(
+                    additivePrice: additivePrice,
+                    additiveTitle: additiveTitle,
+                  ),
                 ],
               ),
             ),

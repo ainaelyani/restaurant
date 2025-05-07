@@ -32,7 +32,7 @@ class CustomTextfield extends StatelessWidget {
         hintText: hintText,
         prefixIcon: prefixIcon,
         isDense: true,
-        contentPadding: EdgeInsets.zero,
+        contentPadding: maxLines == 1? EdgeInsets.zero: EdgeInsets.all(6.r),
         hintStyle: appStyle(12, kGray, FontWeight.normal),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: kRed, width: 0.5.w),
@@ -55,7 +55,7 @@ class CustomTextfield extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: kPrimary, width: 0.5.w),
+          borderSide: BorderSide(color: kGray, width: 0.5.w),
           borderRadius: BorderRadius.circular(12.r),
         ),
       ),
