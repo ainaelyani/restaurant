@@ -4,6 +4,7 @@ import 'package:restaurant/common/background_container.dart';
 import 'package:restaurant/common/reusable_text.dart';
 import 'package:restaurant/constants/constants.dart';
 import 'package:restaurant/views/add_foods/widgets/all_categories.dart';
+import 'package:restaurant/views/add_foods/widgets/image_uploads.dart';
 
 class AddFoods extends StatefulWidget {
   const AddFoods({super.key});
@@ -41,9 +42,38 @@ class _AddFoodsState extends State<AddFoods> {
               height: hieght,
               child: PageView(
                 controller: _pageController,
+                physics: const NeverScrollableScrollPhysics(),
                 pageSnapping: false,
                 children: [
-                  ChooseCategory(),
+                  ChooseCategory(
+                    next:(){
+                      _pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn);
+                    },
+                  ),
+
+                  ImageUploads(
+                    back: (){
+                      _pageController.previousPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn);
+                    },
+                    next: (){
+                      _pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn);
+                    },
+                  ),
+
+                  ChooseCategory(
+                    next:(){
+                      _pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn);
+                    },
+                  ),
+
                 ],
               ),
             ),
