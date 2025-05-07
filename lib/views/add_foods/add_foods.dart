@@ -4,6 +4,7 @@ import 'package:restaurant/common/background_container.dart';
 import 'package:restaurant/common/reusable_text.dart';
 import 'package:restaurant/constants/constants.dart';
 import 'package:restaurant/views/add_foods/widgets/all_categories.dart';
+import 'package:restaurant/views/add_foods/widgets/food_info.dart';
 import 'package:restaurant/views/add_foods/widgets/image_uploads.dart';
 
 class AddFoods extends StatefulWidget {
@@ -66,14 +67,7 @@ class _AddFoodsState extends State<AddFoods> {
                     },
                   ),
 
-                  ChooseCategory(
-                    next:(){
-                      _pageController.nextPage(
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeIn);
-                    },
-                  ),
-
+                  FoodInfo(back: (){}, next: (){})
                 ],
               ),
             ),
