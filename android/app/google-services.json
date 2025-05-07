@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "286701745653",
+    "project_id": "restaurant-foodly-7a340",
+    "storage_bucket": "restaurant-foodly-7a340.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286701745653:android:17e70e2022b2d9b3899cbc",
+        "android_client_info": {
+          "package_name": "com.example.foodly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-OitUjeG7KLb4uAwDlLNte4PImOqln8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286701745653:android:ef39a97a9fdeee90899cbc",
+        "android_client_info": {
+          "package_name": "com.example.restaurant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-OitUjeG7KLb4uAwDlLNte4PImOqln8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286701745653:android:c16d3247d2d2e63c899cbc",
+        "android_client_info": {
+          "package_name": "com.example.restaurant_foodly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-OitUjeG7KLb4uAwDlLNte4PImOqln8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
