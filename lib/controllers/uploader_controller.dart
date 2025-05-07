@@ -71,16 +71,27 @@ class UploaderController extends GetxController{
     if(pickedImage != null){
       if(type== 'one'){
         imageOne.value = File(pickedImage.path);
-        print(imageOne.value);
+        uploadImageToFirebase('one');
         return;
       }else if (type == 'two'){
         imageTwo.value = File(pickedImage.path);
+        uploadImageToFirebase('two');
         return;
       }else if (type == 'three'){
         imageThree.value = File(pickedImage.path);
+        uploadImageToFirebase('three');
         return;
       }else if (type == 'four'){
         imageFour.value = File(pickedImage.path);
+        uploadImageToFirebase('four');
+        return;
+      }else if (type == 'logo'){
+        logo.value = File(pickedImage.path);
+        uploadImageToFirebase('logo');
+        return;
+      }else if (type == 'cover'){
+        cover.value = File(pickedImage.path);
+        uploadImageToFirebase('cover');
         return;
       }
     }
@@ -97,8 +108,71 @@ class UploaderController extends GetxController{
             .putFile(imageOne.value!);
 
         setImageOneUrl = await snapshot.ref.getDownloadURL();
+      } catch (e){
+        debugPrint(e.toString());
+      }
+    }else if(type=='two'){
+      try{
+        String filename = 'images/${DateTime.now().millisecondsSinceEpoch}_${imageTwo.value!.path.split('/').last}';
 
+        TaskSnapshot snapshot = await FirebaseStorage.instance
+            .ref()
+            .child(filename)
+            .putFile(imageTwo.value!);
 
+        setImageTwoUrl = await snapshot.ref.getDownloadURL();
+      } catch (e){
+        debugPrint(e.toString());
+      }
+    }else if(type=='three'){
+      try{
+        String filename = 'images/${DateTime.now().millisecondsSinceEpoch}_${imageThree.value!.path.split('/').last}';
+
+        TaskSnapshot snapshot = await FirebaseStorage.instance
+            .ref()
+            .child(filename)
+            .putFile(imageThree.value!);
+
+        setImageThreeUrl = await snapshot.ref.getDownloadURL();
+      } catch (e){
+        debugPrint(e.toString());
+      }
+    }else if(type=='four'){
+      try{
+        String filename = 'images/${DateTime.now().millisecondsSinceEpoch}_${imageFour.value!.path.split('/').last}';
+
+        TaskSnapshot snapshot = await FirebaseStorage.instance
+            .ref()
+            .child(filename)
+            .putFile(imageFour.value!);
+
+        setImageFourUrl = await snapshot.ref.getDownloadURL();
+      } catch (e){
+        debugPrint(e.toString());
+      }
+    }else if(type=='logo'){
+      try{
+        String filename = 'images/${DateTime.now().millisecondsSinceEpoch}_${logo.value!.path.split('/').last}';
+
+        TaskSnapshot snapshot = await FirebaseStorage.instance
+            .ref()
+            .child(filename)
+            .putFile(logo.value!);
+
+        setLogoUrl = await snapshot.ref.getDownloadURL();
+      } catch (e){
+        debugPrint(e.toString());
+      }
+    }else if(type=='cover'){
+      try{
+        String filename = 'images/${DateTime.now().millisecondsSinceEpoch}_${cover.value!.path.split('/').last}';
+
+        TaskSnapshot snapshot = await FirebaseStorage.instance
+            .ref()
+            .child(filename)
+            .putFile(cover.value!);
+
+        setCoverUrl = await snapshot.ref.getDownloadURL();
       } catch (e){
         debugPrint(e.toString());
       }
