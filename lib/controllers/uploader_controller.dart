@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -10,6 +11,8 @@ class UploaderController extends GetxController{
   var imageTwo = Rxn<File>();
   var imageThree = Rxn<File>();
   var imageFour = Rxn<File>();
+  var logo = Rxn<File>();
+  var cover = Rxn<File>();
 
   RxList<String> _images = <String>[].obs;
 
@@ -19,6 +22,48 @@ class UploaderController extends GetxController{
     _images.add(newValue);
   }
 
+  RxString _imageOneUrl = ''.obs;
+  RxString _imageTwoUrl = ''.obs;
+  RxString _imageThreeUrl = ''.obs;
+  RxString _imageFourUrl = ''.obs;
+  RxString _logoUrl = ''.obs;
+  RxString _coverUrl = ''.obs;
+
+  String get imageOneUrl => _imageOneUrl.value;
+
+  String get imageTwoUrl => _imageTwoUrl.value;
+
+  String get imageThreeUrl => _imageThreeUrl.value;
+
+  String get imageFourUrl => _imageFourUrl.value;
+
+  String get logoUrl => _logoUrl.value;
+
+  String get coverUrl => _coverUrl.value;
+
+  set setLogoUrl(String newValue){
+    _logoUrl.value = newValue;
+  }
+
+  set setCoverUrl(String newValue){
+    _coverUrl.value = newValue;
+  }
+
+  set setImageOneUrl(String newValue){
+    _imageOneUrl.value = newValue;
+  }
+
+  set setImageTwoUrl(String newValue){
+    _imageTwoUrl.value = newValue;
+  }
+
+  set setImageThreeUrl(String newValue){
+    _imageThreeUrl.value = newValue;
+  }
+
+  set setImageFourUrl(String newValue){
+    _imageFourUrl.value = newValue;
+  }
 
   Future<void> pickImage(String type) async{
     final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
@@ -51,9 +96,11 @@ class UploaderController extends GetxController{
             .child(filename)
             .putFile(imageOne.value!);
 
+        setImageOneUrl = await snapshot.ref.getDownloadURL();
+
 
       } catch (e){
-
+        debugPrint(e.toString());
       }
     }
   }
