@@ -11,11 +11,13 @@ import '../../../common/reusable_text.dart';
 import '../../../constants/constants.dart';
 
 class AdditivesInfo extends StatelessWidget {
-  const AdditivesInfo({super.key, required this.additivePrice, required this.additiveTitle, required this.foodTags});
+  const AdditivesInfo({super.key, required this.additivePrice, required this.additiveTitle, required this.foodTags, required this.back, required this.submit});
 
   final TextEditingController additivePrice;
   final TextEditingController additiveTitle;
   final TextEditingController foodTags;
+  final Function back;
+  final Function submit;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +42,14 @@ class AdditivesInfo extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: hieght*0.28,
+            height: hieght*0.22,
 
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.w),
               child: Column(
                 children: [
                   SizedBox(
-                    height: 25.h,
+                    height: 15.h,
                   ),
 
                   CustomTextfield(
@@ -191,7 +193,39 @@ class AdditivesInfo extends StatelessWidget {
                 foodTags.text='';
               } ,
             ),
-          )
+          ),
+
+          SizedBox(
+            height: 15.h,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomButton(
+                  text: "Back",
+                  btnWidth: width/2.3,
+                  btnRadius: 9,
+                  onTap: (){
+                    back();
+                  },
+                ),
+
+                CustomButton(
+                  text: "Submit",
+                  btnWidth: width/2.3,
+                  btnRadius: 9,
+                  onTap: (){
+                    submit();
+
+                  },
+                ),
+
+              ],
+            ),
+          ),
         ],
       ),
     );

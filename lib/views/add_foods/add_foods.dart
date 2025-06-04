@@ -109,6 +109,12 @@ class _AddFoodsState extends State<AddFoods> {
                     additivePrice: additivePrice,
                     additiveTitle: additiveTitle,
                     foodTags: foodTags,
+                    back: (){
+                      _pageController.previousPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn);
+                    },
+                    submit: (){},
                   ),
                 ],
               ),
