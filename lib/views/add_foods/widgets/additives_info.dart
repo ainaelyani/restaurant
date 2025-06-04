@@ -11,10 +11,11 @@ import '../../../common/reusable_text.dart';
 import '../../../constants/constants.dart';
 
 class AdditivesInfo extends StatelessWidget {
-  const AdditivesInfo({super.key, required this.additivePrice, required this.additiveTitle});
+  const AdditivesInfo({super.key, required this.additivePrice, required this.additiveTitle, required this.foodTags});
 
   final TextEditingController additivePrice;
   final TextEditingController additiveTitle;
+  final TextEditingController foodTags;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class AdditivesInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
-                    text: "Add Additives",
+                    text: "Add Additives info",
                     style: appStyle(16, kGray, FontWeight.w600)),
 
                 ReusableText(
@@ -39,7 +40,7 @@ class AdditivesInfo extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: hieght*0.8,
+            height: hieght*0.28,
 
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.w),
@@ -100,8 +101,6 @@ class AdditivesInfo extends StatelessWidget {
                     height: 15.h,
                   ),
 
-
-
                   CustomButton(
                     text: "A D D  A D D I T T I V E S",
                     btnWidth: width,
@@ -129,6 +128,70 @@ class AdditivesInfo extends StatelessWidget {
               ),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 16.w, top: 12.h, bottom: 12.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ReusableText(
+                    text: "Add Food Tags",
+                    style: appStyle(16, kGray, FontWeight.w600)),
+
+                ReusableText(
+                    text: "You are required to add food tags for your product if it has any",
+                    style: appStyle(11, kGray, FontWeight.normal)),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(12.h),
+            child: Column(
+              children: [
+                CustomTextfield(
+                    controller: foodTags,
+                    hintText: "Add Food Tags",
+                    prefixIcon: const Icon(Icons.keyboard_capslock)),
+              ],
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
+            child: Obx(()=>controller.types.isNotEmpty? Row(   //tags ?
+              children:
+              List.generate(controller.types.length, (i){
+                return Container(
+                  margin: EdgeInsets.only(right: 5.w),
+                  decoration: BoxDecoration(
+                      color: kPrimary,
+                      borderRadius: BorderRadius.circular(8.r)
+                  ),
+                  child: Center(
+                    child: Padding(padding: EdgeInsets.symmetric(horizontal: 5.h),
+                      child: ReusableText(text: controller.types[i], style: appStyle(9, kLightWhite, FontWeight.normal)),
+                    ),
+                  ),
+                );
+              }),
+            ): const SizedBox.shrink(),
+            ),
+          ),
+          SizedBox(
+            height: 15.h,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: CustomButton(
+              text: "A D D  F O O D  T A G S",
+              btnRadius: 6,
+              btnHeight: 35,
+              btnColor: kSecondary,
+              onTap: (){
+                controller.setTags= foodTags.text;
+                foodTags.text='';
+              } ,
+            ),
+          )
         ],
       ),
     );

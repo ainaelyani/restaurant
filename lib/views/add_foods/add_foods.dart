@@ -24,6 +24,7 @@ class _AddFoodsState extends State<AddFoods> {
   final TextEditingController types = TextEditingController();
   final TextEditingController additivePrice = TextEditingController();
   final TextEditingController additiveTitle = TextEditingController();
+  final TextEditingController foodTags = TextEditingController();
 
   @override
   void dispose(){
@@ -107,6 +108,7 @@ class _AddFoodsState extends State<AddFoods> {
                   AdditivesInfo(
                     additivePrice: additivePrice,
                     additiveTitle: additiveTitle,
+                    foodTags: foodTags,
                   ),
                 ],
               ),
